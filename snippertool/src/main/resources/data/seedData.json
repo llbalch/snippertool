@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "code": "System.out.println(\"Hello, World!\");",
+    "language": "Java"
+  },
+  {
+    "id": 2,
+    "code": "console.log('Welcome!');",
+    "language": "JavaScript"
+  },
+  {
+    "id": 3,
+    "code": "print('Howdy, World!')",
+    "language": "Python"
+  },
+  {
+    "id": 4,
+    "code": "echo 'Hi, World!';",
+    "language": "PHP"
+  },
+  {
+    "id": 5,
+    "code": "puts 'Hello, World!'",
+    "language": "Ruby"
+  },
+  {
+    "id": 6,
+    "code": "#include <stdio.h>\nint main() {\n  printf(\"Hello, World!\\n\");\n  return 0;\n}",
+    "language": "C"
+  },
+  {
+    "id": 7,
+    "code": "Console.WriteLine(\"Hello, World!\");",
+    "language": "C#"
+  },
+  {
+    "id": 8,
+    "code": "printf('Hello, World!\\n');",
+    "language": "Perl"
+  },
+  {
+    "id": 9,
+    "code": "echo \"Hello, World!\"",
+    "language": "Bash"
+  },
+  {
+    "id": 10,
+    "code": "document.write('Hello, World!');",
+    "language": "HTML/JavaScript"
+  }
+]
