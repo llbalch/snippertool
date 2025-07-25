@@ -1,10 +1,5 @@
 package com.example.snippertool.entity;
 import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 
 @Data
 public class Snippet {
