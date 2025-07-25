@@ -1,10 +1,8 @@
-package com.example.snippertool.entity;
+package Utility;
 import lombok.Data;
 
-
 @Data
-public class User {
-    private int id;
+public class LoginRequest {
     private String email;
     private String password;
 }
