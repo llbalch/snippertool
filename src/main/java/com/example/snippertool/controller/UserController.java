@@ -1,11 +1,13 @@
 package com.example.snippertool.controller;
-
 import Utility.LoginRequest;
 import com.example.snippertool.entity.User;
 import com.example.snippertool.payload.UserRepo;
+import java.util.Date;
+import java.util.Map;
 import java.util.Optional;
-
 import java.util.List;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,16 +41,20 @@ public class UserController {
         if (userOpt.isEmpty()) {
             return ResponseEntity.status(401).body("Invalid email or password");
         }
-
         User user = userOpt.get();
-
         if (!encoder.matches(loginRequest.getPassword(), user.getPassword())) {
             return ResponseEntity.status(401).body("Invalid email or password");
         }
+        // token generation
+        String jwt = Jwts.builder()
+                        .setSubject(user.getEmail())
+                                .claim("userId", user.getId())
+                                        .setIssuedAt(new Date(System.currentTimeMillis()))
+                                                .setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000))
+                                                        .signWith(SignatureAlgorithm.HS512, "YourSecretKey")
+                                                                .compact();
 
-        user.setPassword(null);
-
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(Map.of("token", jwt));
     }
 
     //  get the user data - by email
