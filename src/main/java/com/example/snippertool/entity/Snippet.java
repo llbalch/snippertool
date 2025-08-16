@@ -1,17 +1,30 @@
 package com.example.snippertool.entity;
-import com.fasterxml.jackson.annotation.JsonTypeId;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import lombok.Data;
+import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import lombok.Getter;
+import lombok.Setter;
+
 
 @Entity
-@Data
+@Table(name ="snippet")
+@Setter
+@Getter
+
 public class Snippet {
 
-    private int id;
-    private String code;
-    private String language;
-    private int userId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
+    @Column(nullable = false)
+    private String code;
+
+    @Column
+    private String language;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
